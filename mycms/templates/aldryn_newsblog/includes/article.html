@@ -1,0 +1,103 @@
+{% load i18n staticfiles thumbnail cms_tags apphooks_config_tags %}
+
+{% if detail_view %}
+<div class="row">
+<article class="article
+    {% if article.is_featured %} featured{% endif %}
+    {% if not article.published %} unpublished{% endif %}">
+
+    {# The image is only shown on the detail view by using the condition "and detail_view" #}
+    {% if article.featured_image_id %}
+        <p>
+            <img src="{% thumbnail article.featured_image 800x450 crop subject_location=article.featured_image.subject_location %}" alt="{{ article.featured_image.alt }}">
+        </p>
+    {% endif %}
+
+    {% if article.categories.exists %}
+        <p>
+            {% for category in article.categories.all %}
+                <a href="{% namespace_url 'article-list-by-category' category.slug namespace=namespace default='' %}">{{ category.name }}</a>
+                {% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+    {% endif %}
+
+    <h2>
+        {% render_model article "title" %}
+    </h2>
+
+    <p>{{ article.publishing_date|date }}</p>
+
+    {% include "aldryn_newsblog/includes/author.html" with author=article.author %}
+
+    {% if article.tags %}
+        <p>
+            {% for tag in article.tags.all %}
+                <a href="{% namespace_url 'article-list-by-tag' tag=tag.slug namespace=namespace default='' %}">{{ tag.name }}</a>
+            {% endfor %}
+        </p>
+    {% endif %}
+
+    {% render_placeholder article.content language placeholder_language %}
+        
+</article>
+</div>
+{% else %}
+<div class="row">
+    <article class="article
+    {% if article.is_featured %} featured{% endif %}
+    {% if not article.published %} unpublished{% endif %}">
+        <div class="media">
+            <div class="media-left">
+                {% if article.featured_image_id %}
+                    <img class="media-object" src="{% thumbnail article.featured_image 120x120 crop subject_location=article.featured_image.subject_location %}" alt="{{ article.featured_image.alt }}">
+                {% else %}  
+                    <img class="media-object" src="holder.js/120x120" alt="">
+                {% endif %}
+            </div>
+            <div class="media-body">
+                <h2 class="media-heading">
+                    <a href="{% namespace_url 'article-detail' article.slug namespace=namespace default='' %}">{% render_model article "title" %}</a>
+                </h2>
+                {% render_model article "lead_in" %}
+
+                <ul class="list-inline">
+                    {% if article.categories.exists %}
+                    <li>
+                        <span class="glyphicon glyphicon-list"></span>
+                        {% for category in article.categories.all %}
+                            <a href="{% namespace_url 'article-list-by-category' category.slug namespace=namespace default='' %}">
+                                {{ category.name }}</a>
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </li>
+                    {% endif %}
+                    {% if article.tags.exists %}
+                    <li>
+                        <span class="glyphicon glyphicon-tag"></span>
+                        {% for tag in article.tags.all %}
+                            <a href="{% namespace_url 'article-list-by-tag' tag=tag.slug namespace=namespace default='' %}">
+                                {{ tag.name }}</a>
+                        {% endfor %}
+                    </li>
+                    {% endif %}
+                    <li></li>
+                    <li></li>
+                    <li style="display:none">
+                        <a href="#">
+                            <span class="glyphicon glyphicon-comment"></span> 2 Comments</a>
+                    </li>
+                    <li style="display:none">
+                        <a href="#">
+                            <span class="glyphicon glyphicon-share"></span> 8 Shares</a>
+                    </li>
+                    <li class="pull-right">
+                        {{ article.publishing_date|date }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </article>
+</div>
+<hr>
+{% endif %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="jumbotron vertical-center">
+    <div class="container text-center">
+        <p>{% trans "You have logged out" %}</p>
+        <p>{% trans "Back to " %}<a href="/">{% trans "Home" %}</a>!</p>
+    </div>
+</div>
+{% endblock %}

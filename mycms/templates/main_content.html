@@ -1,0 +1,19 @@
+{% extends "base.html" %} 
+
+{% load cms_tags sekizai_tags staticfiles i18n %} 
+
+{% block title %}
+{% page_attribute "page_title" %}
+{% endblock title %} 
+
+{% block content %}
+<div class="container after-nav">
+    {% placeholder "content" %}
+</div>
+
+{% addtoblock "js" %}
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+{% endaddtoblock %}
+
+{% endblock content %}
+

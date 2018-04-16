@@ -1,0 +1,18 @@
+{% load i18n static apphooks_config_tags %}
+
+
+<canvas id="tagcloud"></canvas>
+{% comment %} <div id="html-tagcloud"></div> {% endcomment %}
+<script type="text/javascript">
+    var objects = [
+    {% for tag in tags %}
+        [
+            "{{ tag.name }}",
+            {{ tag.article_count }},
+            "{% namespace_url "article-list-by-tag" tag.slug namespace=instance.app_config.namespace default='' %}",
+        ],
+    {% endfor %}
+    ]; 
+   
+    window.tags = objects;
+</script>

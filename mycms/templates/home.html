@@ -1,0 +1,174 @@
+{% extends "base.html" %} 
+
+{% load cms_tags sekizai_tags staticfiles i18n %} 
+
+{% block title %}
+{% page_attribute "page_title" %}
+{% endblock title %} 
+
+{% block content %}
+
+{% static_placeholder "featured" %}
+
+<div class="container-fluid">
+	
+	<!-- Left Column -->
+	<div class="col-sm-3">
+
+		<!-- Text Panel -->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<a class="link-unstyled" href="/articles/category/action/">
+				<h1 class="panel-title">
+					<span class="glyphicon glyphicon-flag"></span> 活动预告</h1>
+				</a>
+			</div>
+
+			<div class="list-group">
+				{% static_placeholder "bbb" %}
+			</div>
+		</div>
+
+		<!-- List-Group Panel -->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<a class="link-unstyled" href="/articles/category/workshop/">
+				<h1 class="panel-title">
+					<span class="glyphicon glyphicon-edit"></span> 工作室动态</h1>
+				</a>
+			</div>
+			<div class="list-group">
+				{% static_placeholder "aaa" %}
+			</div>
+		</div>
+
+	</div>
+	<!--/Left Column-->
+
+
+	<!-- Center Column -->
+	<div class="col-sm-6">
+		{% placeholder "content" %}
+	</div>
+	<!--/Center Column-->
+
+
+	<!-- Right Column -->
+	<div class="col-sm-3">
+
+		<!-- Search -->
+		<form class="form-inline search hide" role="search">
+			<div class="form-group">
+				<input type="text" class="form-control">
+			</div>
+			<button type="submit" class="btn btn-default">
+				<span class="glyphicon glyphicon-search"></span> Search</button>
+		</form>
+
+		<!-- tags -->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<span class="glyphicon glyphicon-tags"></span>
+					热门标签
+				</h3>
+			</div>
+			<div class="panel-body">
+				{% static_placeholder "ccc" %}
+			</div>
+		</div>
+
+		<!-- Text Panel -->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<a class="link-unstyled" href="/articles/category/workcase/">
+					<h3 class="panel-title">
+						<span class="glyphicon glyphicon-thumbs-up"></span>
+						工作案例
+					</h3>
+				</a>
+			</div>
+			<div class="panel-body">
+				{% static_placeholder "ddd" %}
+			</div>
+		</div>
+	</div>
+	<!--/Right Column -->
+
+</div>
+<!--/container-fluid-->
+
+<div class="footer-blurb">
+	<div class="container">
+		<div class="row">
+			<h4 class="text-center">合作伙伴</h4>
+			{% static_placeholder "footer_content" %}
+		</div>
+	</div>
+</div>
+
+{% addtoblock "js" %}
+<script type="text/javascript" src="{% static 'js/wordcloud2.js' %}"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		function getSize() {
+			return Math.floor((Math.random() * 3) + 4);
+		}
+
+		function fitToContainer(canvas){
+			// Make it visually fill the positioned parent
+			canvas.style.width ='100%';
+			canvas.style.height='100%';
+			// ...then set the internal size to match
+			canvas.width  = canvas.offsetWidth;
+			canvas.height = canvas.offsetHeight;
+		}
+
+		var tagCloud = $('#tagcloud');
+		fitToContainer(tagCloud[0]);
+		
+		var list = window.tags.map(function(value) {
+			return value.map(function(avalue, index) {
+				//根据文章数量计算weight，这里为随机4-6
+				if (1===index) return getSize();
+				return avalue;
+			})
+		});
+		if (window.tags.length < 100) {
+			for (var i = window.tags.length, index = 0; i < 100; i++) {
+				list.push(list[index]);
+				if (++index >= window.tags.length) {
+					index = 0;
+				}
+			}
+		}
+		//console.log(list);
+  
+		var options = {
+			gridSize: Math.round(16 * tagCloud.width() / 1024),
+			weightFactor: function (size) {
+			  return Math.pow(size, 2.3) * tagCloud.width() / 1024;
+			},
+			fontFamily: 'Finger Paint, cursive, sans-serif',
+			color: 'random-dark',
+			//color: function (word, weight) {
+			//	return getRandomColor();
+			//  //return (weight > 8) ? '#f02222' : '#c09292';
+			//},
+			rotateRatio: 0.5,
+			//rotationSteps: 2,
+			//backgroundColor: '#ffe0e0',
+			//hover: window.drawBox,
+			click: function(item, dimension, event) {
+				window.location.href = item[2];
+			},
+			list: list,
+		};
+
+		WordCloud(tagCloud[0], options );
+	});
+</script>
+{% endaddtoblock %}
+
+{% endblock content %}
+

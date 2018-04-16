@@ -1,0 +1,151 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-04-16 13:42+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: mycms/settings/defaults.py:166 mycms/settings/defaults.py:183
+msgid "cn"
+msgstr ""
+
+#: mycms/settings/defaults.py:189 mycms/templates/registration/logout.html:8
+msgid "Home"
+msgstr "首页样式"
+
+#: mycms/settings/defaults.py:190
+msgid "Maincontent"
+msgstr "普通样式"
+
+#: mycms/templates/aldryn_newsblog/article_detail.html:13
+msgid "Previous Article"
+msgstr "上一篇文章"
+
+#: mycms/templates/aldryn_newsblog/article_detail.html:15
+msgid "Back to Overview"
+msgstr "浏览"
+
+#: mycms/templates/aldryn_newsblog/article_detail.html:17
+msgid "Next Article"
+msgstr "下一篇文章"
+
+#: mycms/templates/aldryn_newsblog/article_list.html:8
+#: mycms/templates/aldryn_newsblog/other/article_list.html:8
+#: mycms/templates/aldryn_newsblog/plugins/latest_articles.html:6
+msgid "No items available"
+msgstr "暂无内容"
+
+#: mycms/templates/aldryn_newsblog/includes/pagination.html:8
+msgid "Previous"
+msgstr "上一篇"
+
+#: mycms/templates/aldryn_newsblog/includes/pagination.html:42
+msgid "Next"
+msgstr "下一篇"
+
+#: mycms/templates/aldryn_newsblog/plugins/categories.html:3
+msgid "All"
+msgstr "所有"
+
+#: mycms/templates/registration/activate.html:7
+msgid "Account activation failed"
+msgstr "帐号激活失败"
+
+#: mycms/templates/registration/activation_complete.html:7
+msgid "Your account is now activated."
+msgstr "您的帐号已激活成功"
+
+#: mycms/templates/registration/activation_email.txt:2
+msgid "Activate account at"
+msgstr "激活帐号于"
+
+#: mycms/templates/registration/activation_email.txt:6
+#, python-format
+msgid "Link is valid for %(expiration_days)s days."
+msgstr "链接在 %(expiration_days)s 天里有效"
+
+#: mycms/templates/registration/activation_email_subject.txt:1
+msgid "Account activation on"
+msgstr "帐号激活于"
+
+#: mycms/templates/registration/login.html:20
+#: mycms/templates/registration/password_reset_complete.html:9
+msgid "Log in"
+msgstr "登录"
+
+#: mycms/templates/registration/login.html:24
+msgid "Forgot password"
+msgstr "忘记密码"
+
+#: mycms/templates/registration/login.html:24
+msgid "Reset it"
+msgstr "重置"
+
+#: mycms/templates/registration/login.html:25
+msgid "Not member"
+msgstr "非会员"
+
+#: mycms/templates/registration/login.html:25
+msgid "Register"
+msgstr "注册"
+
+#: mycms/templates/registration/logout.html:7
+msgid "You have logged out"
+msgstr "您已经退出登录"
+
+#: mycms/templates/registration/logout.html:8
+#, fuzzy
+#| msgid "Back to Overview"
+msgid "Back to "
+msgstr "浏览"
+
+#: mycms/templates/registration/password_change_done.html:7
+msgid "Password changed"
+msgstr "密码已修改"
+
+#: mycms/templates/registration/password_change_form.html:9
+#: mycms/templates/registration/password_reset_confirm.html:12
+#: mycms/templates/registration/password_reset_form.html:9
+msgid "Submit"
+msgstr "提交"
+
+#: mycms/templates/registration/password_reset_complete.html:7
+msgid "Password reset successfully"
+msgstr "密码重置成功"
+
+#: mycms/templates/registration/password_reset_confirm.html:17
+msgid "Password reset failed"
+msgstr "密码重置失败"
+
+#: mycms/templates/registration/password_reset_done.html:7
+msgid "Email with password reset instructions has been sent."
+msgstr "重置密码邮件已经发送"
+
+#: mycms/templates/registration/password_reset_email.html:2
+#, python-format
+msgid "Reset password at %(site_name)s"
+msgstr "请在 %(site_name)s 重置密码"
+
+#: mycms/templates/registration/registration_closed.html:7
+msgid "Registration is currently closed."
+msgstr "注册当前已经关闭"
+
+#: mycms/templates/registration/registration_complete.html:7
+msgid "You are now registered. Activation email sent."
+msgstr "您已成功注册，激活邮件已经发送"
+
+#: mycms/templates/registration/registration_form.html:18
+msgid "提交"
+msgstr ""

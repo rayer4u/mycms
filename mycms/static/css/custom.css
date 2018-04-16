@@ -1,0 +1,85 @@
+body {
+	font-family:"幼圆";
+    padding-top: 50px; /* Padding for .navbar-fixed-top. Change value if navbar height changes. Remove if using .navbar-static-top. */
+}
+
+/* h1, h2, h3, h4, h5, h6,
+h1 a:link, h2 a:link, h3 a:link, h4 a:link, h5 a:link, h6 a:link {
+	color: black;
+	} */
+
+.feature {
+	background: yellowgreen linear-gradient(to bottom, greenyellow, olivedrab);
+	color: black;
+	}
+
+.text-truncate {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.link-unstyled, .link-unstyled:link, .link-unstyled:hover {
+	color: inherit;
+	text-decoration: inherit;
+}
+
+.jumbotron {
+	padding-top: 0px;
+	padding-bottom: 0px;	
+}
+
+.after-nav {
+	margin-top: 20px;
+}
+
+.navbar-brand {
+	padding-top: 5px;
+	padding-left: 15px;
+	padding-bottom: 5px;
+	padding-right: 15px;
+}
+
+#feature-carousel {
+	min-height: 200px;
+	}
+
+#feature-carousel img {
+	margin: 0 auto;
+	}
+
+.footer-blurb {
+    padding: 30px 0;
+    margin-top: 20px;
+    background-color: #eee;
+    color: black;
+}
+    
+.footer-blurb-item {
+    padding: 20px;
+    }
+ 
+.small-print {
+	background-color: #fff;
+	padding: 30px 0;
+}
+
+.vertical-center {
+	min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+	min-height: 100vh; /* These two lines are counted as one :-)       */
+  
+	display: flex;
+	align-items: center;
+  }
+
+.feature,
+.page-intro,
+.article-intro,
+.small-print {
+	text-align: center;
+	}
+
+form.search {
+	margin-bottom: 20px;
+	}
+
