@@ -42,15 +42,27 @@
 ```
 pip install -r requirements.txt
 ```
-3. 运行
+3. 首次运行，或者有更新了，运行以下相关命令更新相关部分
+```
+# 创建超级用户
+./manage.py createsuperuser
+# 静态资源
+./manage.py collectstatic
+# 数据库
+./manage.py makemigrations
+./manage.py migrate
+# 语言串
+./manage.py compilemessages
+```
+4. 运行
 ```
 # dev setting
-./manager runserver 
+./manage.py runserver 
 or 
 # prod setting，正式发布
 ./startup.sh
 ```
-4. .gitignore是本地依赖文件，请自行补充
+5. .gitignore包含了本地依赖文件，请自行补充相关文件
 ```
 mycms/static/watermark.png
 mycms/settings/prod.py
