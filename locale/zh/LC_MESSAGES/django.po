@@ -23,11 +23,11 @@ msgstr ""
 
 #: mycms/settings/defaults.py:189 mycms/templates/registration/logout.html:8
 msgid "Home"
-msgstr "首页样式"
+msgstr "首页"
 
 #: mycms/settings/defaults.py:190
 msgid "Maincontent"
-msgstr "普通样式"
+msgstr "主页面"
 
 #: mycms/templates/aldryn_newsblog/article_detail.html:13
 msgid "Previous Article"

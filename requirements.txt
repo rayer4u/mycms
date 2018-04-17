@@ -19,4 +19,5 @@ html5lib>=0.999999,<0.99999999
 Pillow>=3.0
 django-sekizai>=0.9
 six
+django-registration
 git+https://github.com/rayer4u/aldryn-newsblog.git@test2

@@ -1,5 +1,9 @@
+# 简介
+基于django-cms的程序员友好的、自带后台的、定制化很高的内容管理系统的一个实例。-_-!
+
+# 更新说明
 ## 更新0.99版本说明
-1. 用户注册，注册用户可用栏目配置
+1. 用户注册相关，可配置某些分类的文章需要注册用户才可见。目前在配置文件里配置
 
 ## 更新0.95版本说明
 ### 解决系统问题
@@ -32,12 +36,35 @@
 ### 解决服务器问题
 1. 时间不对，导致文章显示问题
 
+# 简易安装使用说明
+1. 安装好并使用virtualenv环境
+2. 安装依赖库到系统
+```
+pip install -r requirements.txt
+```
+3. 运行
+```
+# dev setting
+./manager runserver 
+or 
+# prod setting，正式发布
+./startup.sh
+```
+4. .gitignore是本地依赖文件，请自行补充
+```
+mycms/static/watermark.png
+mycms/settings/prod.py
+media/icon.png
+```
 
 
-# 开源声明
-- django ()
-- django-cms ()
-- aldryn_newsblog ()
-- django-registration ()
-- django-registration-templates (https://github.com/macdhuibh/django-registration-templates)
-
+# 相关开源项目
+使用了并感谢以下以及所包含的所有项目
+- [django](https://www.djangoproject.com/)
+- [django-cms](https://www.django-cms.org/)
+- [aldryn_newsblog](https://github.com/aldryn/aldryn-newsblog) 已[定制](https://github.com/rayer4u/aldryn-newsblog)
+- [django-registration](https://github.com/ubernostrum/django-registration)
+- [django-registration-templates](https://github.com/macdhuibh/django-registration-templates) 已直接合入修改
+- [django-easy-thumbnails-watermark]()
+- [wordcloud2](http://timdream.org/wordcloud2.js/)
+- [canvas-nest](https://github.com/hustcc/canvas-nest.js)

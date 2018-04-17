@@ -17,8 +17,7 @@ class RegistrationForm(BaseRegistrationForm):
         # 把help_text放到placeholder里
         for field in self:
             field.field.widget.attrs['class'] = 'form-control'
-            field.field.widget.attrs['aria-describedby'] = \
-                'basic-'+field.id_for_label
+            field.field.widget.attrs['aria-describedby'] = 'basic-' + field.id_for_label
             if (field.help_text):
                 field.field.widget.attrs['placeholder'] = field.help_text
 
@@ -36,7 +35,6 @@ class AuthenticationForm(BaseAuthenticationForm):
             logger.info(dir(field))
 
             field.field.widget.attrs['class'] = 'form-control'
-            field.field.widget.attrs['aria-describedby'] = \
-                'basic-'+field.id_for_label
+            field.field.widget.attrs['aria-describedby'] = 'basic-' + field.id_for_label
             if (field.help_text):
                 field.field.widget.attrs['placeholder'] = field.help_text

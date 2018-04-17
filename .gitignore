@@ -1,5 +1,13 @@
 **/*.pyc
-static/
-media/
-logs/
 .vscode/
+
+# 语言编译包。通过manager自行编译
+locale/**/*.mo
+
+# dev的测试数据库
+project.db
+
+# 以下为本地依赖文件
+mycms/static/watermark.png
+mycms/settings/prod.py
+media/icon.png
