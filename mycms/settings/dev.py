@@ -25,6 +25,8 @@ logging.basicConfig(
 # 调试模板
 TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
 
+THUMBNAIL_DEBUG = DEBUG
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # DEFAULT_FROM_EMAIL = ''

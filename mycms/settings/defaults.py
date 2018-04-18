@@ -80,7 +80,6 @@ TEMPLATES = [
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.core.context_processors.request',
                 'django.template.context_processors.i18n',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -108,13 +107,13 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # 'django.middleware.locale.LocaleMiddleware', # django<1.10的处理，
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
-    # 'cms.middleware.language.LanguageCookieMiddleware', # django<1.10的处理，
+    'cms.middleware.language.LanguageCookieMiddleware',
     # 'mycms.middleware.UrlAuthenticationMiddleware',
 )
 
@@ -134,10 +133,9 @@ INSTALLED_APPS = (
     'treebeard',
     'djangocms_text_ckeditor',
     'filer',
-    # 'reversion',
     'easy_thumbnails',
     'easy_thumbnails_watermark',
-    'djangocms_column',
+    # 'djangocms_column',   # 支持有问题，暂时用不到，注释掉
     'djangocms_link',
     'cmsplugin_filer_file',
     'cmsplugin_filer_folder',
@@ -145,14 +143,13 @@ INSTALLED_APPS = (
     'cmsplugin_filer_utils',
     'djangocms_style',
     'djangocms_snippet',
-    'djangocms_googlemap',
+    # 'djangocms_googlemap',  # 暂时用不到，注释掉
     'djangocms_video',
     'aldryn_apphooks_config',
     'aldryn_categories',
     'aldryn_common',
     'aldryn_newsblog',
     'aldryn_people',
-    # 'aldryn_reversion',
     'aldryn_translation_tools',
     'parler',
     'sortedm2m',
@@ -211,8 +208,6 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.background',
     'easy_thumbnails_watermark.thumbnail_processors.watermark_processor',
 )
-
-THUMBNAIL_DEBUG = True
 
 THUMBNAIL_DEFAULT_OPTIONS = {
     'WATERMARK': {

@@ -28,16 +28,14 @@ urlpatterns = [
         name='registration_register'),  # 定制界面用
     url(r'^accounts/', include('registration.backends.hmac.urls')),
     # url(r'^accounts/', include('registration.backends.simple.urls')),
-    url(r'^admin/', include(admin.site.urls)),  # NOQA
-    url(r'^', include('cms.urls')),
 ]
 
 
-# django<1.10的处理，不支持default language no prefix
-# urlpatterns += i18n_patterns(
-#     url(r'^admin/', include(admin.site.urls)),  # NOQA
-#     url(r'^', include('cms.urls')),
-# )
+urlpatterns += i18n_patterns(
+    url(r'^admin/', include(admin.site.urls)),  # NOQA
+    url(r'^', include('cms.urls')),
+    prefix_default_language=False
+)
 
 
 # This is only needed when using runserver.
