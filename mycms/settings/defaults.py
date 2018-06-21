@@ -127,6 +127,12 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
     'django.contrib.messages',
+    'rest_framework',
+    'django_filters',
+    'coreapi',
+    # 'rest_framework_swagger',
+    'drf_yasg',
+    # 'django_extensions',
     'cms',
     'menus',
     'sekizai',
@@ -145,6 +151,7 @@ INSTALLED_APPS = (
     'djangocms_snippet',
     # 'djangocms_googlemap',  # 暂时用不到，注释掉
     'djangocms_video',
+    # 'djangocms_rest_api',
     'aldryn_apphooks_config',
     'aldryn_categories',
     'aldryn_common',
@@ -154,6 +161,7 @@ INSTALLED_APPS = (
     'parler',
     'sortedm2m',
     'taggit',
+    'taggit_serializer',
     'mycms'
 )
 
@@ -220,3 +228,22 @@ THUMBNAIL_DEFAULT_OPTIONS = {
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'mycms.pagination.MyCursorPagination',
+    'PAGE_SIZE': 10,
+
+    'DEFAULT_THROTTLE_CLASSES': (
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle',
+    ),
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '100/day',
+        'user': '1000/day',
+    },
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+}

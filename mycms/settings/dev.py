@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from defaults import *
+from .defaults import *
 import logging
 
 DEBUG = True
@@ -13,6 +13,17 @@ DATABASES = {
         'PASSWORD': '',
         'PORT': '',
         'USER': ''
+    }
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/var/tmp/django_mycms_cache',
+        'TIMEOUT': 60,
+        'OPTIONS': {
+            'MAX_ENTRIES': 1000
+        }
     }
 }
 
