@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import absolute_import, print_function, unicode_literals
 
 import pickle
@@ -104,10 +105,9 @@ class UserSerializer(serializers.ModelSerializer):
     #     return getFieldValueOfObj(obj, 'article')
 
 
-class ArticleSerializer(TaggitSerializer, RequestSerializer, serializers.ModelSerializer):
+# 显示层级不一样
+class ArticleListSerializer(RequestSerializer, serializers.ModelSerializer):
     url = serializers.SerializerMethodField()
-    # owner = UserSerializer()
-    tags = TagListSerializerField()
     title = serializers.SerializerMethodField()
     lead_in = serializers.SerializerMethodField()
     featured_image = serializers.SerializerMethodField()
@@ -115,7 +115,6 @@ class ArticleSerializer(TaggitSerializer, RequestSerializer, serializers.ModelSe
     class Meta:
         model = Article
         fields = '__all__'
-        # depth = 1
 
     def get_url(self, obj):
         return self.request.build_absolute_uri(obj.get_absolute_url())
@@ -131,6 +130,14 @@ class ArticleSerializer(TaggitSerializer, RequestSerializer, serializers.ModelSe
             return self.request.build_absolute_uri(obj.featured_image.url)
         else:
             return None
+
+
+class ArticleSerializer(TaggitSerializer, ArticleListSerializer):
+    owner = UserSerializer()
+    tags = TagListSerializerField()
+
+    class Meta(ArticleListSerializer.Meta):
+        depth = 1
 
 
 class CategorySerializer(RequestSerializer, serializers.ModelSerializer):

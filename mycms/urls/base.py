@@ -17,20 +17,24 @@ from drf_yasg import openapi
 from .. import views
 from .api import router
 
-admin.autodiscover()
+
+api_info = openapi.Info(
+    title="开放api",
+    default_version='v1',
+    description="网站开放访问内容的api",
+    terms_of_service="",
+    contact=openapi.Contact(email="someone@someplace.local"),
+    # license=openapi.License(name="BSD License"),
+)
+
 schema_view = get_schema_view(
-    openapi.Info(
-        title="开放api",
-        default_version='v1',
-        description="网站开放访问内容的api",
-        terms_of_service="",
-        contact=openapi.Contact(email="someone@someplace.local"),
-        # license=openapi.License(name="BSD License"),
-    ),
+    info=api_info,
     validators=['flex'],  # , 'ssv'],
     public=True,
     # permission_classes=(permissions.AllowAny,),
 )
+
+admin.autodiscover()
 
 urlpatterns = [
     url(r'^sitemap\.xml$', sitemap,
@@ -44,7 +48,7 @@ urlpatterns = [
         name='registration_register'),  # 定制界面用
     url(r'^accounts/', include('registration.backends.hmac.urls')),
     # url(r'^accounts/', include('registration.backends.simple.urls')),
-    url(r'^api/token/$', views.MyObtainAuthSession.as_view()),
+    url(r'^api/session/$', views.MyObtainAuthSession.as_view()),
     url(r'^api/', include(router.urls, namespace='api')),
     url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=None), name='schema-json'),
     url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=None), name='schema-swagger-ui'),

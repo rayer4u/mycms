@@ -229,6 +229,10 @@ THUMBNAIL_DEFAULT_OPTIONS = {
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
+SWAGGER_SETTINGS = {
+    'DEFAULT_INFO': 'mycms.urls.api_info',
+}
+
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'mycms.pagination.MyCursorPagination',
     'PAGE_SIZE': 10,
